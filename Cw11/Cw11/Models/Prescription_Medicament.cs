@@ -10,6 +10,8 @@ namespace Cw11.Models
 
         public int? Dose { get; set; }
 
-        [MaxLength(100)] public string Details { get; set; }
+        [MaxLength(100)] 
+        [Required]
+        public string Details { get; set; }
     }
 }

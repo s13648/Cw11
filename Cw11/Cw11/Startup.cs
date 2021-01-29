@@ -1,4 +1,5 @@
 using Cw11.Models;
+using Cw11.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,9 @@ namespace Cw11
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration["DbConnectionString"]));
+
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
+            
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Cw11", Version = "v1"}); });
         }
